@@ -1,0 +1,10 @@
+{
+  "saludo": {
+    "component": "Greeting"
+  },
+
+  "contador-hot-sale": {
+    "component": "ContadorHS"
+  }
+
+}
