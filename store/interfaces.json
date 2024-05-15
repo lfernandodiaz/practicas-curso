@@ -2,9 +2,13 @@
   "saludo": {
     "component": "Greeting"
   },
-
   "contador-hot-sale": {
     "component": "ContadorHS"
+  },
+  "product-info-tec": {
+    "component" : "ProductInfo"
+  },
+  "share-button-custom": {
+    "component" : "ShareButton"
   }
-
 }

@@ -1,4 +1,7 @@
 {
   "admin/test": "teste",
-  "store/test": "teste"
+  "store/test": "teste",
+  "greeting.text": "Hola",
+  "productinfo.release": "Fecha de lanzamiento: ",
+  "sharebutton.text": "Compartir en "
 }

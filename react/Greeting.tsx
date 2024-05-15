@@ -2,6 +2,7 @@ import React from 'react'
 import { Input } from 'vtex.styleguide'
 import {useCssHandles} from "vtex.css-handles"
 import "./Greeting.css"
+import {FormattedMessage} from 'react-intl'
 type Props = {
   name: string;
   imageUrl: string;
@@ -15,7 +16,11 @@ function Greeting({ name,  imageUrl, date }: Props) {
   return (
     <>
     <div className="">
-      <p>Hola {name}</p>
+      <p>
+        <FormattedMessage id="greeting.text"/>
+        {` `}
+        {name}
+      </p>
       <img src={imageUrl} alt="" className={`${handles.imageSiteHandle}`}/>
       <Input
             value={date}

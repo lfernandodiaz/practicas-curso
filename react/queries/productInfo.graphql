@@ -1,0 +1,5 @@
+query productInfo($slug: String){
+  product(slug: $slug){
+    productName
+  }
+}
