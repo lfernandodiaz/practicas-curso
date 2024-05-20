@@ -1,10 +1,10 @@
 {
-  "admin.app.example": {
-    "component": "AdminExample",
-    "path": "/admin/app/example"
+  "admin.app.users": {
+    "component": "UserTable",
+    "path": "/admin/app/tablecurso"
   },
-  "admin.app.example-detail": {
-    "component": "AdminExampleDetail",
-    "path": "/admin/app/example/:id"
+  "admin.app.users-detail": {
+    "component": "UserDetail",
+    "path": "/admin/app/tablecurso/:id"
   }
 }
