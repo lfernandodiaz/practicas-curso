@@ -5602,7 +5602,7 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-"stats-lite@github:vtex/node-stats-lite#dist":
+stats-lite@vtex/node-stats-lite#dist:
   version "2.2.0"
   resolved "https://codeload.github.com/vtex/node-stats-lite/tar.gz/1b0d39cc41ef7aaecfd541191f877887a2044797"
   dependencies:
@@ -5776,6 +5776,10 @@ tdigest@^0.1.1:
   integrity sha512-+G0LLgjjo9BZX2MfdvPfH+MKLCrxlXSYec5DaPYP1fe6Iyhf0/fSmJ0bFiZ1F8BT6cGXl2LpltQptzjXKWEkKA==
   dependencies:
     bintrees "1.0.2"
+
+"tecmonterreymxqa.service-example@https://luis--tecmonterreymxqa.myvtex.com/_v/private/typings/linked/v1/tecmonterreymxqa.service-example@0.0.1+build1716222251/public/_types/react":
+  version "0.0.0"
+  resolved "https://luis--tecmonterreymxqa.myvtex.com/_v/private/typings/linked/v1/tecmonterreymxqa.service-example@0.0.1+build1716222251/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
 
 test-exclude@^5.2.3:
   version "5.2.3"

@@ -3,7 +3,7 @@ import { InstanceOptions, IOContext, JanusClient } from "@vtex/api"
 
 export class SkusClient extends JanusClient {
   private readonly routes = {
-    getOrder: (account: string, refId: string) => `http://${account}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidbyrefid/${refId}`
+    getSku: (account: string, refId: string) => `http://${account}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidbyrefid/${refId}`
   }
   constructor(context: IOContext, options?: InstanceOptions) {
     super(context, {
@@ -15,8 +15,14 @@ export class SkusClient extends JanusClient {
     })
   }
   public async getSkuId(refId: string): Promise<VtexOrder> {
-    return this.http.get(this.routes.getOrder(this.context.account, refId))
+    try {
+      const response = await this.http.get(this.routes.getSku(this.context.account, refId))
+      return response
+    } catch (err) {
+      throw new Error(`Error fetching skuId: ${err.message}`)
+    }
   }
+
 }
 
 

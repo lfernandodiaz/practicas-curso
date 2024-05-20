@@ -59,7 +59,7 @@ export default new Service({
       GET: [order]
     }),
     sku: method({
-      GET: [skuid]
+      GET: [skuid],
     })
 
   },
