@@ -1,5 +1,5 @@
 {
-  "memory": 256,
+  "memory":256,
   "ttl": 10,
   "timeout": 2,
   "minReplicas": 2,
@@ -8,6 +8,14 @@
   "routes": {
     "status": {
       "path": "/_v/status/:code",
+      "public": true
+    },
+    "order": {
+      "path": "/_v/order/:orderid",
+      "public": true
+    },
+    "sku": {
+      "path": "/_v/sku/:refid",
       "public": true
     }
   }
