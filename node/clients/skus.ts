@@ -3,16 +3,12 @@ import { InstanceOptions, IOContext, JanusClient } from "@vtex/api"
 
 export class SkusClient extends JanusClient {
   private readonly routes = {
-
       getSku: (account: string, refId: string) => `http://${account}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitidbyrefid/${refId}`,
 
       getSkuList:(account: string, productId: string) => `http://${account}.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitByProductId/${productId}`,
 
-      createSku: (account: string) => `https://${account}.vtexcommercestable.com.br/api/catalog/pvt/stockkeepingunit`
+      createSku: (account: string) => `http://${account}.vtexcommercestable.com.br/api/catalog/pvt/stockkeepingunit`
   }
-
-
-
 
 
   constructor(context: IOContext, options?: InstanceOptions) {

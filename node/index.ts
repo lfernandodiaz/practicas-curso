@@ -6,6 +6,8 @@ import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
 import { order } from './middlewares/order'
 import { skuid } from './middlewares/skuid'
+import { findsku } from './middlewares/findsku'
+import { createsku } from './middlewares/createsku'
 
 const TIMEOUT_MS = 5 * 1000
 
@@ -44,6 +46,7 @@ declare global {
   interface State extends RecorderState {
     code: number,
     orderid: string
+    body: any
   }
 }
 
@@ -60,6 +63,9 @@ export default new Service({
     }),
     sku: method({
       GET: [skuid],
+    }),
+    createsku: method({
+      POST: [findsku, createsku]
     })
 
   },

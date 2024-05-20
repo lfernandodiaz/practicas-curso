@@ -17,6 +17,10 @@
     "sku": {
       "path": "/_v/sku/:refid",
       "public": true
+    },
+    "createsku": {
+      "path": "/_v/create/sku/:productid",
+      "public": true
     }
   }
 }
