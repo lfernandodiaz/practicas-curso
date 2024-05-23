@@ -48,12 +48,12 @@ export class MasterDataClient extends MasterData {
     try {
       const document = await this.searchDocuments({
         dataEntity: this.dataEntity,
-        fields: ["email", "firstname", "lastname", "id"],
+        fields: ["email", "firstname", "lastname", "id", "validate"],
         schema: this.schemaName,
         where : email ? `email=${email}` : '',
         pagination: {
           page: 1,
-          pageSize: 25
+          pageSize: 50
         }
       })
 
