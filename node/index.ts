@@ -8,7 +8,9 @@ import { order } from './middlewares/order'
 import { skuid } from './middlewares/skuid'
 import { findsku } from './middlewares/findsku'
 import { createsku } from './middlewares/createsku'
-
+import { newuser} from "./middlewares/newuser"
+import { finduser } from './middlewares/finduser'
+import { updateuser } from './middlewares/updateuser'
 const TIMEOUT_MS = 5 * 1000
 
 // Create a LRU memory cache for the Status client.
@@ -66,7 +68,14 @@ export default new Service({
     }),
     createsku: method({
       POST: [findsku, createsku]
-    })
+    }),
+    userinfo: method(
+      {
+        POST: [newuser],
+        GET: [finduser],
+        PUT: [updateuser]
+      }
+    )
 
   },
 })

@@ -5777,10 +5777,6 @@ tdigest@^0.1.1:
   dependencies:
     bintrees "1.0.2"
 
-"tecmonterreymxqa.service-example@https://luis--tecmonterreymxqa.myvtex.com/_v/private/typings/linked/v1/tecmonterreymxqa.service-example@0.0.1+build1716222251/public/_types/react":
-  version "0.0.0"
-  resolved "https://luis--tecmonterreymxqa.myvtex.com/_v/private/typings/linked/v1/tecmonterreymxqa.service-example@0.0.1+build1716222251/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
-
 test-exclude@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-5.2.3.tgz#c3d3e1e311eb7ee405e092dac10aefd09091eac0"

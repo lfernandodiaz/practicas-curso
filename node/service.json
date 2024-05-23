@@ -21,6 +21,10 @@
     "createsku": {
       "path": "/_v/create/sku/:productid",
       "public": true
+    },
+    "userinfo": {
+      "path": "/_v/userinfo/:email",
+      "public": true
     }
   }
 }
