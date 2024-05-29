@@ -1,15 +1,16 @@
 {
-  "name": "admin-example",
+  "name": "admin-with-graphql",
   "vendor": "tecmonterreymxqa",
   "version": "0.0.1",
   "title": "Example Admin App",
-  "description": "",
+  "description": "Admin app with GraphQL service",
   "mustUpdateAt": "2022-08-28",
   "scripts": {
     "postreleasy": "vtex publish"
   },
   "dependencies": {
-    "vtex.styleguide": "9.x"
+    "vtex.styleguide": "9.x",
+    "tecmonterreymxqa.graphql-example": "0.x"
   },
   "builders": {
     "react": "3.x",

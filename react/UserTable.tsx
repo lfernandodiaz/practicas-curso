@@ -1,17 +1,20 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Layout, PageBlock, PageHeader, Table} from 'vtex.styleguide'
-
+import {useQuery} from 'react-apollo'
 
 import './styles.global.css'
 import NewUserForm from './components/NewUserForm'
+import EditUserForm from './components/EditUserForm'
+import  getAllUsers  from './queries/users.graphql'
 
 
  type User = {
   rowData : {
-    name: string
+    firstname: string
     email: string
-    number: number
+    lastname: string
+    validate: boolean
   }
 }
 
@@ -20,51 +23,76 @@ const AdminExample: FC = () => {
 
 
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenEdit, setIsOpenEdit] = useState(false)
+  const [emailProp, setEmailProp] = useState('')
+
+  const [users, setUsers] = useState<any[]>([])
+  const [user, setUser] = useState<any>()
+
+
+
+
+
 
 
   const defaultSchema = {
     properties: {
-      name: {
+      firstname: {
         title: 'Name',
         width: 300,
       },
+      lastname: {
+        title: 'Last name',
+        width: 300,
+      },
+
       email: {
         title: 'Email',
         minWidth: 350,
       },
-      number: {
-        title: 'Number',
-        // default is 200px
-        minWidth: 100,
-      },
+      validate: {
+        title: 'Validate',
+        width: 200,
+        cellRenderer: ({ cellData }: { cellData: boolean }) => {
+          return cellData ? (
+            <div className="">Yes</div>
+          ) : (
+            <div className="">No</div>
+          )
+        },
+      }
     },
   }
 
-  const users = [
-    {
-      name: 'John Doe',
-      email: 'jogh@mail.com',
-      number: 3
-    },
-    {
-      name: 'John Doe2',
-      email: 'jogh@mail.com',
-      number: 2
-    },
-    {
-      name: 'John Doe3',
-      email: 'jogh@mail.com',
-      number: 1
-    }
-  ]
 
+  const getUsers = async () => {
+    const {data, loading, error} = await useQuery(getAllUsers)
+    console.log(data)
+    console.log(loading)
+    console.log(error)
+
+    return data?.users
+  }
+
+  getUsers().then(
+    (users) => {
+    setUsers(users)
+    }
+  )
+
+  useEffect(() => {
+    getUsers().then((users) => {
+      setUsers(users)
+    })
+  } , [isOpen, isOpenEdit])
 
   const downloadData = () => {
     const data = users.map((user) => {
       return {
-        name: user.name,
+        firstname: user.firstname,
+        lastname: user.lastname,
         email: user.email,
-        number: user.number
+
       }
     })
 
@@ -106,10 +134,12 @@ const AdminExample: FC = () => {
       items={users}
       density="high"
       onRowClick={({rowData}: User) => {
+        setEmailProp(rowData.email)
+        setIsOpenEdit(true)
+        setUser(rowData)
 
-         alert(
-          `you just clicked ${rowData.name}, number is ${rowData.number} and email ${rowData.email}`
-        )
+
+
       }}
       toolbar={{
         download: {
@@ -148,12 +178,16 @@ const AdminExample: FC = () => {
 
       <NewUserForm isOpen={isOpen} onClose={
        () => {
+        console.log('closing')
           setIsOpen(false)
         }
       }></NewUserForm>
-
-
-
+      <EditUserForm isOpen={isOpenEdit} onClose={
+            () => {
+              setIsOpenEdit(false)
+            }
+          }
+          emailProp={emailProp} userinfo={user}></EditUserForm>
       </PageBlock>
     </Layout>
   )

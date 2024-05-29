@@ -1,0 +1,5 @@
+mutation editUserMutation($email: String!, $firstname: String!, $lastname: String!, $validate: Boolean!) {
+  editUser(email: $email, firstname: $firstname, lastname: $lastname, validate: $validate){
+    response
+  }
+}

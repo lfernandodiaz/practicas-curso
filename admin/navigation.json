@@ -6,7 +6,7 @@
   "subSectionItems": [
     {
       "labelId": "admin-example.navigation.label-table",
-      "path": "/admin/tablecurso",
+      "path": "/admin/tablecurso-graphql",
       "searchKeyWordsHelpers": "tabla usuarios"
     }
   ]

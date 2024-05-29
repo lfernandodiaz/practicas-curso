@@ -1,10 +1,10 @@
 {
   "admin.app.users": {
     "component": "UserTable",
-    "path": "/admin/app/tablecurso"
+    "path": "/admin/app/tablecurso-graphql"
   },
   "admin.app.users-detail": {
     "component": "UserDetail",
-    "path": "/admin/app/tablecurso/:id"
+    "path": "/admin/app/tablecurso-graphql/:id"
   }
 }

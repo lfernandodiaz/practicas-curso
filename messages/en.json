@@ -1,6 +1,6 @@
 {
   "admin-example.navigation.label-group": "Example admins",
-  "admin-example.navigation.label-table": "Users Table",
+  "admin-example.navigation.label-table": "Users Table With GraphQL",
   "admin-example.navigation.search.kws": "test, mock, fake",
   "admin-example.navigation.details.search.kws": "details, mock, test, hello",
   "admin-example.navigation.table.search.kws": "table, mock, test, bye",

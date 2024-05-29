@@ -1,0 +1,8 @@
+query getAllUsers{
+  users{
+    email
+    firstname
+    lastname
+    validate
+  }
+}

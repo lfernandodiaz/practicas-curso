@@ -1,0 +1,6 @@
+input EditUserInput {
+  email: String
+  firstname: String
+  lastname: String
+  validate: Boolean
+}

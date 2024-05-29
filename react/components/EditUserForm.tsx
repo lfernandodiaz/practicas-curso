@@ -1,14 +1,22 @@
-import React, { useEffect } from "react"
-import { Modal, Input, Toggle, Button} from 'vtex.styleguide'
-interface NewUserFormProps {
-  isOpen: boolean
+import React, { useEffect } from "react";
+import { Modal, Input, Toggle, Button } from 'vtex.styleguide';
+import { useMutation   } from 'react-apollo'
+import editUserMutation from '../queries/editUser.graphql'
+type UserInfo = {
+  email: string
+  firstname: string
+  lastname: string
+  validate: boolean
+}
+interface EditUserFormProps {
   onClose: () => void
+  isOpen: boolean
+  emailProp: string
+  userinfo: UserInfo
 }
 
 
-function NewUserForm(
-  {isOpen, onClose}: NewUserFormProps
-) {
+function EditUserForm({isOpen, onClose, userinfo}: EditUserFormProps){
 
   const [isOpenC, setIsOpenC] = React.useState(false)
   const [validate, setValidate] = React.useState(false)
@@ -16,38 +24,46 @@ function NewUserForm(
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
 
+  const [editUser, {data, loading, error}] = useMutation(editUserMutation)
+  console.log(data)
+  console.log(loading)
+  console.log(error)
+
+
+  const setDataForm = () => {
+    if (!userinfo) return
+    setEmail(userinfo.email)
+    setFirstName(userinfo.firstname)
+    setLastName(userinfo.lastname)
+    setValidate(userinfo.validate)
+  }
+
+  const handleEditUser = async () => {
+
+    try{
+      editUser({
+        variables: {
+          email: email,
+          firstname: firstName,
+          lastname: lastName,
+          validate: validate
+        }
+      })
+      onClose()
+
+    } catch (error) {
+      alert('Error updating user')
+    }
+  }
+
+
   useEffect(() => {
     setIsOpenC(isOpen)
   }, [isOpen])
 
-  const handleNewUser = async () => {
-    const body = {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      validate: validate
-    }
-    try{
-       await fetch('/_v/userinfo/new', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-        }
-      ).then( (response) => {
-        if (response.ok) {
-          alert('User created')
-          onClose()
-        } else if (response.status === 500) {
-          alert('User already exists')
-        }
-      })
-
-    } catch (error) {
-      alert('Error creating user')
-    }
-  }
+ useEffect(() => {
+  setDataForm()
+  }, [userinfo])
 
   return  (
     <Modal
@@ -68,6 +84,7 @@ function NewUserForm(
           onChange={
             (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
           }
+          value={email}
         />
         </div >
 
@@ -79,6 +96,7 @@ function NewUserForm(
           onChange={
             (e: React.ChangeEvent<HTMLInputElement>) => setFirstName(e.target.value)
           }
+          value={firstName}
         />
           </div>
        <div className="mb4">
@@ -89,7 +107,7 @@ function NewUserForm(
           onChange={
             (e: React.ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)
           }
-
+          value={lastName}
         />
        </div>
 
@@ -106,17 +124,13 @@ function NewUserForm(
         <div className="mt4">
           <Button variation="primary" onClick={
             () => {
-              handleNewUser()
+              handleEditUser()
             }
-          }>New user</Button>
+          }>Update</Button>
         </div>
       </div>
     </Modal>
   )
 }
 
-export default NewUserForm
-
-
-
-
+export default EditUserForm
