@@ -52,6 +52,7 @@ export class BookClient extends ExternalClient {
       id: this.db.length.toString(),
     }
 
+
     const newDb = [newBook, ...this.db]
 
     this.db = newDb

@@ -1,7 +1,7 @@
 {
   "name": "graphql-example",
-  "vendor": "vtex",
-  "version": "0.3.0",
+  "vendor": "tecmonterreymxqa",
+  "version": "0.0.1",
   "title": "GraphQL Example",
   "description": "Reference app for VTEX IO GraphQL Services",
   "mustUpdateAt": "2022-01-04",
@@ -25,6 +25,35 @@
     },
     {
       "name": "graphql-query"
+    },
+    {
+      "name": "OMSViewer"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/*"
+      }
+    },
+    {
+      "name": "POWER_USER_DS"
+    },
+    {
+      "name": "ADMIN_CRM"
+    },
+    {
+      "name": "POWER_USER_CRM"
+    },
+    {
+      "name": "vbase-read-write"
     }
   ],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"

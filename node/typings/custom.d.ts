@@ -3,6 +3,7 @@ export interface Book {
   cacheId?: string
   id: string
   name: string
+  date?: string
 }
 
 export interface BookInput {
@@ -11,3 +12,11 @@ export interface BookInput {
 }
 
 export type Maybe<T> = T | void
+
+
+export interface UserInput {
+  email: string
+  lastname: string
+  firstname: string
+  validate: boolean
+}

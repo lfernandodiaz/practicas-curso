@@ -2,9 +2,9 @@ import type { Book } from '../../typings/custom'
 
 const mock: Book[] = [
   {
-    authors: ['Default Author 1'],
+    authors: ['Luis'],
     id: '0',
-    name: 'Default Book 1',
+    name: 'Jupiter',
   },
   {
     authors: ['Default Author 2'],

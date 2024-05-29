@@ -5,7 +5,10 @@ interface Args {
 }
 
 export const newBook = (
-  _: any,
-  { book }: Args,
-  { clients: { book: booksClient } }: Context
-) => booksClient.newBook(book)
+  _: any, { book }: Args, { clients: { book: booksClient } }: Context
+) => {
+  booksClient.newBook(book)
+}
+
+
+
