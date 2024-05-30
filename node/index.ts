@@ -16,7 +16,7 @@ import { newUser } from './resolvers/newUser'
 import { deleteUser } from './resolvers/deleteUser'
 import { editUser } from './resolvers/editUser'
 
-const MEDIUM_TIMEOUT_MS = 2 * 1000
+const MEDIUM_TIMEOUT_MS = 5 * 1000
 
 declare global {
   // We declare a global Context type just to avoid re-writing ServiceContext<Clients, State> in every handler and resolver

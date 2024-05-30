@@ -66,7 +66,7 @@ type Mutation {
   delete(id: String): Boolean
   editBook(id: ID!, book: BookInput!): Book
   newBook(book: BookInput!): Book
-  newUser(user: UserInput!) : UserCreated
+  newUser(email:String!, firstname: String!, lastname: String!, validate: Boolean! ) : UserCreated
   deleteUser(email: String!): UserDeleted
   editUser(email:String!, firstname: String!, lastname: String!, validate: Boolean! ) : UserEdited
 }
