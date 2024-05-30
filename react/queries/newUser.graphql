@@ -1,0 +1,7 @@
+mutation newUserMutation($email: String!, $firstname: String!, $lastname: String!, $validate: Boolean!) {
+  newUser(email: $email, firstname: $firstname, lastname: $lastname, validate: $validate){
+    Id
+    Href
+    DocumentId
+  }
+}

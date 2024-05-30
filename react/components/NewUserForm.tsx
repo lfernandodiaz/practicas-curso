@@ -1,5 +1,8 @@
 import React, { useEffect } from "react"
 import { Modal, Input, Toggle, Button} from 'vtex.styleguide'
+import { useMutation   } from 'react-apollo'
+import newUserMutation from '../queries/newUser.graphql'
+
 interface NewUserFormProps {
   isOpen: boolean
   onClose: () => void
@@ -16,33 +19,28 @@ function NewUserForm(
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
 
+  const [newUser, {data, loading, error}] = useMutation(newUserMutation)
+  console.log(data)
+  console.log(loading)
+  console.log(error)
+
+
   useEffect(() => {
     setIsOpenC(isOpen)
   }, [isOpen])
 
   const handleNewUser = async () => {
-    const body = {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      validate: validate
-    }
+    console.log('handleNewUser')
     try{
-       await fetch('/_v/userinfo/new', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-        }
-      ).then( (response) => {
-        if (response.ok) {
-          alert('User created')
-          onClose()
-        } else if (response.status === 500) {
-          alert('User already exists')
+      newUser({
+        variables: {
+          email: email,
+          firstname: firstName,
+          lastname: lastName,
+          validate: validate
         }
       })
+      onClose()
 
     } catch (error) {
       alert('Error creating user')

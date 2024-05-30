@@ -1,0 +1,5 @@
+mutation deleteUserMutation($email: String!){
+  deleteUser(email: $email){
+    response
+  }
+}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Modal, Input, Toggle, Button } from 'vtex.styleguide';
 import { useMutation   } from 'react-apollo'
 import editUserMutation from '../queries/editUser.graphql'
+import DeleteUserButton from "./DeleteUserButton";
 type UserInfo = {
   email: string
   firstname: string
@@ -85,6 +86,7 @@ function EditUserForm({isOpen, onClose, userinfo}: EditUserFormProps){
             (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)
           }
           value={email}
+          disabled
         />
         </div >
 
@@ -127,7 +129,15 @@ function EditUserForm({isOpen, onClose, userinfo}: EditUserFormProps){
               handleEditUser()
             }
           }>Update</Button>
+          <span className="pl4">
+            <DeleteUserButton email={email}  onClose={
+              () => {
+                onClose()
+              }
+            }/>
+          </span>
         </div>
+
       </div>
     </Modal>
   )

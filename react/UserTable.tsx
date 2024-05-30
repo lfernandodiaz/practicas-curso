@@ -7,6 +7,7 @@ import './styles.global.css'
 import NewUserForm from './components/NewUserForm'
 import EditUserForm from './components/EditUserForm'
 import  getAllUsers  from './queries/users.graphql'
+import ExportData from './components/ExportData'
 
 
  type User = {
@@ -28,12 +29,6 @@ const AdminExample: FC = () => {
 
   const [users, setUsers] = useState<any[]>([])
   const [user, setUser] = useState<any>()
-
-
-
-
-
-
 
   const defaultSchema = {
     properties: {
@@ -63,10 +58,15 @@ const AdminExample: FC = () => {
       }
     },
   }
+  const  {data, loading, error, refetch}= useQuery(getAllUsers)
+    console.log(data)
+    console.log(loading)
+    console.log(error)
 
 
   const getUsers = async () => {
-    const {data, loading, error} = await useQuery(getAllUsers)
+    const  {data, loading, error, refetch}= await useQuery(getAllUsers)
+    refetch()
     console.log(data)
     console.log(loading)
     console.log(error)
@@ -84,32 +84,8 @@ const AdminExample: FC = () => {
     getUsers().then((users) => {
       setUsers(users)
     })
-  } , [isOpen, isOpenEdit])
+  } , [isOpen, isOpenEdit, ])
 
-  const downloadData = () => {
-    const data = users.map((user) => {
-      return {
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-
-      }
-    })
-
-    const csv = data.map((row) => {
-      return Object.values(row).join(',')
-    }).join('\n')
-
-    const blob = new Blob([csv], { type: 'text/csv' })
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.setAttribute('hidden', '')
-    a.setAttribute('href', url)
-    a.setAttribute('download', 'usedata.csv')
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-  }
 
   const newUser = (body?: any) => {
     return  fetch('https://jsonplaceholder.typicode.com/users'), {
@@ -127,7 +103,11 @@ const AdminExample: FC = () => {
       }
     >
       <PageBlock variation="full">
-
+      <ExportData users={users} onDownload={
+        () => {
+          alert('Downloaded')
+        }
+      }/>
       <Table
       fullWidth
       schema={defaultSchema}
@@ -142,12 +122,6 @@ const AdminExample: FC = () => {
 
       }}
       toolbar={{
-        download: {
-          label: <FormattedMessage id='admin-example.table.export'></FormattedMessage>,
-          handleCallback: () => {
-            downloadData()
-          },
-        },
         upload: {
           label: 'Import',
           handleCallback: () => alert('Callback()'),
@@ -171,6 +145,7 @@ const AdminExample: FC = () => {
           handleCallback: () => {
             newUser()
             setIsOpen(true)
+
           },
         },
       }}
@@ -185,6 +160,12 @@ const AdminExample: FC = () => {
       <EditUserForm isOpen={isOpenEdit} onClose={
             () => {
               setIsOpenEdit(false)
+              refetch()
+              getUsers().then(
+                (users) => {
+                setUsers(users)
+                }
+              )
             }
           }
           emailProp={emailProp} userinfo={user}></EditUserForm>
