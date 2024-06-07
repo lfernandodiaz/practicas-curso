@@ -1,0 +1,11 @@
+{
+  "session-watcher-demo": {
+    "input": {
+      "authentication": ["storeUserEmail"],
+      "checkout": ["orderFormId"]
+    },
+    "output": {
+      "public": ["demo"]
+    }
+  }
+}
