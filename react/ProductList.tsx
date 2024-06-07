@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC, useCallback, useEffect } from 'react'
 import { useOrderForm } from 'vtex.order-manager/OrderForm'
 import { useOrderItems } from 'vtex.order-items/OrderItems'
 import { ExtensionPoint } from 'vtex.render-runtime'
@@ -26,8 +26,23 @@ const ProductList: FC<Props> = ({ renderAsChildren, classes }) => {
   const { push } = usePixel()
   const { handles } = useCssHandles(CSS_HANDLES, { classes })
 
+
+  const [targetItem, setTargetItem] = React.useState(null)
+ 
+  const findItemById = (items: any)=> {
+   return items.find((item: any) => item.id == '550')
+  } 
+
+  useEffect(() => {
+    setTargetItem(findItemById(items))
+  }, [items])
+
+
+
+ 
   const handleQuantityChange = useCallback(
     (_: string, quantity: number, item: OrderFormItemWithIndex) => {
+      alert('El item es: ' + item.index)
       if (quantity === item.quantity) {
         return
       }
@@ -92,6 +107,14 @@ const ProductList: FC<Props> = ({ renderAsChildren, classes }) => {
         onQuantityChange={handleQuantityChange}
         onRemove={handleRemove}
       />
+      {
+        targetItem  &&(
+          <div>
+           Un producto cuenta con un cupón de descuento.
+
+          </div>
+        )
+      }
     </div>
   )
 }

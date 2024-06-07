@@ -1,8 +1,8 @@
 {
-  "vendor": "vtex",
+  "vendor": "tecmonterreymxqa",
   "name": "minicart",
   "title": "Mini Cart",
-  "version": "2.67.1",
+  "version": "0.0.1",
   "builders": {
     "messages": "1.x",
     "store": "0.x",
