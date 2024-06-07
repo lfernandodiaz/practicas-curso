@@ -1,4 +1,4 @@
-.productHighlightWrapper--collection {
+/* .productHighlightWrapper--collection {
   position: absolute;
   top: 10px;
   left: 5px;
@@ -9,4 +9,33 @@
   background: antiquewhite;
   border-radius: 20px;
   padding: 5px 10px;
+} */
+
+:global(.vtex-stack-layout-0-x-stackItem--collection) {
+  position: absolute;
+  width: 100%;
+  left: auto;
+  top: auto;
+  bottom: 0;
+}
+
+.productHighlightText {
+  display: block;
+}
+
+.productHighlightWrapper {
+  font-size: 0;
+}
+
+.productHighlightWrapper {
+  display: block;
+  &[data-highlight-id="187"] {
+    background-image: url("https://www.svgrepo.com/show/1195/premium-badge.svg");
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    content: "";
+  }
 }

@@ -7,6 +7,7 @@
   },
   "header-layout.desktop": {
     "children": [
+      "contador-hot-sale",
       "flex-layout.row#1-desktop",
       "flex-layout.row#3-desktop",
       "sticky-layout#4-desktop"
@@ -19,7 +20,7 @@
       "fullWidth": true
     }
   },
-  
+
   "flex-layout.row#3-desktop": {
     "props": {
       "blockClass": "menu-link",
@@ -128,6 +129,16 @@
       "url": "https://storecomponents.vteximg.com.br/arquivos/store-theme-logo-mobile.png",
       "width": "77.5",
       "height": "27.5"
+    }
+  },
+  "contador-hot-sale": {
+    "props": {
+      "title": "Hot Sale en: ",
+      "leftImage": "https://www.pngitem.com/pimgs/m/21-218534_transparent-hot-sale-png-transparent-png-hot-sale.png",
+      "rightImage": "https://www.pngitem.com/pimgs/m/21-218534_transparent-hot-sale-png-transparent-png-hot-sale.png",
+      "targetHour": 22,
+      "targetMinute": 12,
+      "targetSecond": 12
     }
   }
 }

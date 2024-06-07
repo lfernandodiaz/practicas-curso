@@ -1,7 +1,7 @@
 {
-  "vendor": "vtex",
+  "vendor": "tecmonterreymxqa",
   "name": "store-theme",
-  "version": "5.1.0",
+  "version": "0.0.1",
   "builders": {
     "styles": "2.x",
     "store": "0.x",
@@ -23,7 +23,7 @@
     "vtex.carousel": "2.x",
     "vtex.shelf": "1.x",
     "vtex.menu": "2.x",
-    "vtex.minicart": "2.x",
+    "tecmonterreymxqa.minicart": "0.x",
     "vtex.product-details": "1.x",
     "vtex.product-kit": "1.x",
     "vtex.search-result": "3.x",
@@ -62,10 +62,10 @@
     "vtex.product-specifications": "1.x",
     "vtex.tab-layout": "0.x",
     "vtex.condition-layout": "2.x",
-    "vtex.css-handles": "1.x"
+    "vtex.css-handles": "1.x",
+    "tecmonterreymxqa.vtexcurso-react-components": "0.x",
+    "vtex.overlay-layout": "0.x"
   },
-  "peerDependencies": {
-    "vtex.reviews-and-ratings": "3.x"
-  },
+  "peerDependencies": {},
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

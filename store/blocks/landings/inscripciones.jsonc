@@ -1,0 +1,70 @@
+{
+  "store.custom#inscripciones": {
+    "blocks": [
+      "rich-text#inscripciones",
+      "list-context.product-list",
+      "flex-layout.row#mensajes",
+      "product-info-tec"
+    ]
+  },
+  "rich-text#inscripciones": {
+    "props": {
+      "text": "Inscripciones abiertas para el ciclo escolar. ¡No te quedes fuera!",
+      "textAlignment": "CENTER"
+    }
+  },
+
+  "list-context.product-list": {
+    "blocks": ["product-summary.shelf"],
+    "children": ["slider-layout#shelfhome"],
+    "props": {
+      "collection": "187",
+      "text": "Certificados"
+    }
+  },
+
+  "product-summary.shelf": {
+    "children": [
+      "product-summary-image",
+      "product-summary-name",
+      /*  "product-summary-description", */
+      "product-summary-price",
+      /* "product-summary-sku-selector", */
+      "product-summary-buy-button"
+    ]
+  },
+  "slider-layout#shelfhome": {
+    "props": {
+      "itemsPerPage": {
+        "desktop": 4,
+        "tablet": 2,
+        "phone": 2
+      },
+      "showArrows": true,
+      "showDots": false
+    }
+  },
+  "flex-layout.row#mensajes": {
+    "children": ["flex-layout.col#mensaje1", "flex-layout.col#mensaje2"],
+    "props": {
+      "colGap": 8,
+      "fullWidth": true
+    }
+  },
+  "flex-layout.col#mensaje1": {
+    "children": ["saludo"]
+  },
+  "flex-layout.col#mensaje2": {
+    "children": ["saludo#estudiante"]
+  },
+  "saludo": {
+    "props": {
+      "name": "Luis"
+    }
+  },
+  "saludo#estudiante": {
+    "props": {
+      "name": "estudiante"
+    }
+  }
+}

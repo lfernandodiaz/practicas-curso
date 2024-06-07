@@ -5,9 +5,11 @@
       "condition-layout.product#availability",
       "flex-layout.row#description",
       "flex-layout.row#specifications-title",
+      "modal-trigger#productinfo",
       "product-specification-group#table",
+      "overlay-trigger#dropdown",
+      "disclosure-layout-group#group",
       "shelf.relatedProducts",
-      "product-reviews",
       "product-questions-and-answers"
     ]
   },
@@ -100,6 +102,8 @@
     },
     "children": [
       "flex-layout.row#product-name",
+      "product-info-tec",
+      "condition-layout.product#condid",
       "product-rating-summary",
       "flex-layout.row#list-price-savings",
       "flex-layout.row#selling-price",
@@ -121,9 +125,15 @@
     "props": {
       "marginBottom": 3
     },
-    "children": ["vtex.store-components:product-name"]
+    "children": ["vtex.store-components:product-name", "share-button-custom"]
   },
 
+  "share-button-custom": {
+    "props": {
+      "platformName": "Twitter",
+      "url": "https://twitter.com/intent/tweet?text=Check%20out%20this%20product%20on%20our%20store%20%F0%9F%98%8D"
+    }
+  },
   "sku-selector": {
     "props": {
       "variationsSpacing": 3,
@@ -179,6 +189,141 @@
         "Twitter": false,
         "Pinterest": true
       }
+    }
+  },
+
+  "condition-layout.product#condid": {
+    "props": {
+      "conditions": [
+        {
+          "subject": "categoryId",
+          "arguments": {
+            "id": "46"
+          }
+        }
+      ],
+      "Then": "rich-text#chamarra",
+      "Else": "rich-text#nochamarra"
+    }
+  },
+  "rich-text#chamarra": {
+    "props": {
+      "text": "##### Es una chamarra"
+    }
+  },
+  "rich-text#nochamarra": {
+    "props": {
+      "text": "##### No es una chamarra"
+    }
+  },
+
+  "disclosure-layout-group#group": {
+    "children": [
+      "disclosure-layout#product-q&a",
+      "disclosure-layout#product-q&a",
+      "disclosure-layout#product-q&a"
+    ]
+  },
+
+  "disclosure-layout#product-q&a": {
+    "children": [
+      "disclosure-trigger#product-q&a",
+      "disclosure-content#product-q&a"
+    ]
+  },
+  "disclosure-trigger#product-q&a": {
+    "children": ["rich-text#first-question"]
+  },
+  "rich-text#first-question": {
+    "props": {
+      "text": "##### Tipo de tela"
+    }
+  },
+  "disclosure-content#product-q&a": {
+    "children": ["rich-text#first-answer"]
+  },
+  "rich-text#first-answer": {
+    "props": {
+      "text": "##### Algodón"
+    }
+  },
+  "disclosure-state-indicator": {
+    "props": {
+      "Show": "icon"
+    }
+  },
+
+  //Modal layout
+
+  "modal-trigger#productinfo": {
+    "children": ["rich-text#productinfo", "modal-layout#productinfo"]
+  },
+
+  "rich-text#productinfo": {
+    "props": {
+      "text": "##### Product Information"
+    }
+  },
+  "modal-layout#productinfo": {
+    "children": ["modal-header#productinfo", "rich-text#productinfocontent"],
+    "props": {
+      "fullScreen": false
+    }
+  },
+  "modal-header#productinfo": {
+    "children": ["rich-text#productinfoheader"],
+    "props": {
+      "showCloseButton": true
+    }
+  },
+  "rich-text#productinfoheader": {
+    "props": {
+      "text": "##### Product Information Title"
+    }
+  },
+
+  "rich-text#productinfocontent": {
+    "props": {
+      "text": "##### Product Information Content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc. Nullam auctor, nunc nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc. Nullam auctor, nunc nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
+    }
+  },
+
+  "overlay-trigger#dropdown": {
+    "children": ["rich-text#dropdown", "overlay-layout#dropdown"]
+  },
+  "rich-text#dropdown": {
+    "props": {
+      "text": "##### Dropdown"
+    }
+  },
+
+  "overlay-layout#dropdown": {
+    "props": {
+      "placement": "bottom",
+      "scrollBehavior": "default",
+      "backdrop": "visible",
+      "showArrow": true
+    },
+    "children": [
+      "rich-text#dd1",
+      "rich-text#dd2",
+      "rich-text#dd3",
+      "modal-trigger#productinfo"
+    ]
+  },
+  "rich-text#dd1": {
+    "props": {
+      "text": "##### Option 1"
+    }
+  },
+  "rich-text#dd2": {
+    "props": {
+      "text": "##### Option 2"
+    }
+  },
+  "rich-text#dd3": {
+    "props": {
+      "text": "##### Option 3"
     }
   }
 }
